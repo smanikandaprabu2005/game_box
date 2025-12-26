@@ -3,7 +3,7 @@
 Game Box is a browser-based game hub that brings together multiple classic games in one interactive platform.  
 Built using HTML, CSS, and JavaScript, it features a visually appealing 3D slider interface and works seamlessly on GitHub Pages.
 
-##🔗 Live Demo 
+## 🔗 Live Demo 
 https://smanikandaprab2005.github.io/game_box/
 
 ## Games Available
