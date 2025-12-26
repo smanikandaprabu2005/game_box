@@ -4,7 +4,7 @@ Game Box is a browser-based game hub that brings together multiple classic games
 Built using HTML, CSS, and JavaScript, it features a visually appealing 3D slider interface and works seamlessly on GitHub Pages.
 
 ## 🔗 Live Demo 
-https://smanikandaprab2005.github.io/game_box/
+https://smanikandaprabu2005.github.io/game_box/
 
 ## Games Available
 -  Ludo  
