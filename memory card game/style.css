@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'poppins',sans-serif;
+    list-style:none;
+}
+img{
+    height:25px;
+    width:25px;
+    margin:30px;
+}
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    background: radial-gradient(circle, rgba(0, 225, 255, 0.984), rgb(255, 0, 217), rgb(0, 255, 238));
+
+}
+.wrapper{
+    height:470px;
+    width:400px;
+    padding:10px;
+    background-color:white;
+    border-radius: 10px;
+    flex-direction:row;
+}
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color:black;
+    padding: 0px 10px;
+    border-bottom: 2px solid black;
+}
+.timer{
+    position:relative;
+    left:15%;
+    transform: translateX(100%);
+}
+.flip_count {
+   position:absolute;
+}
+.cards, .card, .view{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.cards{
+    flex-grow:1;
+    height:100%;
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+.cards .card{
+    cursor:pointer;
+    position:relative;
+    perspective:800px;
+    height:calc(100%/4-10px);
+    width:calc(100%/4-10px);
+}
+.card.shake{
+    animation:shake 0.35s ease-in-out;
+}
+@keyframes shake{
+    0%,100%{
+        transform:translateX(0);
+    }
+    20%{
+        transform:translateX(-13px);
+    }
+    40%{
+        transform:translateX(13px);
+    }
+    60%{
+        transform:translateX(-8px);
+    }
+    80%{
+        transform:translateX(8px);
+    }
+}
+.cards .card .view{
+    width:100%;
+    height:75px;
+    user-select:none;
+    pointer-events:none;
+    background:white;
+    border-radius: 7px;
+    transition:transform 0.5s linear;
+    box-shadow: 0 3px 10px black;
+}
+
+.card .back-view{
+    position:absolute;
+    transform:rotateY(90deg);
+}
+.card.front-view img{
+    max-width:45px;
+}
+.card.flip .back-view{
+    transform:rotateY(0);
+}
+button {
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    
+}
+
+/* Hover effect */
+#startBtn{
+    background-color:rgb(24, 235, 94);
+}
+#startBtn:hover {
+    background-color:grey;
+}
+
+/* Reset button - different color */
+#resetBtn {
+    background-color: #f44336;
+}
+
+#resetBtn:hover {
+    background-color:grey;
+}
+
+
+@media (max-width: 500px) {
+    .wrapper {
+        width: 90%;
+        height: auto;
+    }
+    .cards {
+        padding-top: 60px;
+    }
+    .timer, .flip_count {
+        font-size: 16px;
+    }
+}

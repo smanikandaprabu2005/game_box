@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Box</title>
+    <style>        
+     body {
+            font-family: Arial, sans-serif;
+            background: url('game.jpg') no-repeat center center fixed;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: rgb(16, 210, 236);
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            position: relative;
+            
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110.8%;
+            background-color: rgba(0, 0, 0, 0.136); 
+            z-index: -1;
+        }
+        .game-container {
+                width: 100%;
+                height: 100vh;
+                text-align: center  ;
+                overflow: hidden;
+                position: relative;
+        }
+        .game-container .slider {
+            position: absolute;
+            width: 200px;
+            height: 350px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;           
+        }
+        .game-container .slider:hover {
+            animation-play-state: paused; /* Pause rotation on hover */
+        }
+        @keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-6deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-5deg) rotateY(360deg);
+    }
+}
+.game-container .slider .game{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(350px);
+}
+        h1 {
+            font-size: 2.5rem;
+            background-color: #1b1a1a8c;
+            padding: 15px 25px 15px 30px;
+            margin-top: 20px;
+            border-radius: 20px;
+            text-shadow:
+                0 0 3px #10d2ec,
+                0 0 3px #10d2ec,
+                0 0 4px #fff;
+            perspective: 400px;
+        }
+        .wavecolor {
+            display: inline-block;
+            animation: colorWave 1.6s linear infinite;
+        }
+        .wavecolor:nth-child(1) { animation-delay: 0s; }
+        .wavecolor:nth-child(2) { animation-delay: 0.12s; }
+        .wavecolor:nth-child(3) { animation-delay: 0.24s; }
+        .wavecolor:nth-child(4) { animation-delay: 0.36s; }
+        .wavecolor:nth-child(5) { animation-delay: 0.48s; }
+        .wavecolor:nth-child(6) { animation-delay: 0.60s; }
+        .wavecolor:nth-child(7) { animation-delay: 0.72s; }
+        .wavecolor:nth-child(8) { animation-delay: 0.84s; }
+        .wavecolor:nth-child(9) { animation-delay: 0.96s; }
+        @keyframes colorWave {
+            0%   { color: #10d2ec; text-shadow: 0 0 8px #10d2ec99; }
+            25%  { color: #ff4fd8; text-shadow: 0 0 12px #ff4fd899; }
+            50%  { color: #ffb86c; text-shadow: 0 0 12px #ffb86c99; }
+            75%  { color: #10d2ec; text-shadow: 0 0 8px #10d2ec99; }
+            100% { color: #10d2ec; text-shadow: 0 0 8px #10d2ec99; }
+        }
+        @keyframes floatTitle {
+            0% { transform: translateY(0) rotateX(0deg);}
+            100% { transform: translateY(-8px) rotateX(10deg);}
+        }
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-auto-rows: minmax(250px, auto);
+            gap: 40px; 
+            padding: 40px 30px; 
+            max-width: 1400px;  
+            width: 100%;
+        }
+        .game {
+            background-color: rgb(14, 184, 196);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            max-width: 340px;
+            width: 100%;
+            margin: 0 auto;
+            animation: boxColorWave 3s linear infinite;
+        }
+        .game:nth-child(1) { animation-delay: 0s; }
+        .game:nth-child(2) { animation-delay: 0.5s; }
+        .game:nth-child(3) { animation-delay: 1s; }
+        .game:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes boxColorWave {
+            0%   { background-color: rgb(14, 184, 196); }
+            33%  { background-color: rgb(255, 79, 216); }
+            66%  { background-color: rgb(255, 184, 108); }
+            100% { background-color: rgb(14, 184, 196); }
+        }
+        .game::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.7) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: skewX(-20deg);
+            pointer-events: none;
+            animation: flash-light 3s infinite;
+        }
+        @keyframes flash-light {
+            0% {
+                left: -75%;
+            }
+            10% {
+                left: 110%;
+            }
+            100% {
+                left: 110%;
+            }
+        }
+        .game:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 38px 10px #91ffeb, 0 6px 12px rgba(30, 28, 28, 0.2);
+        }
+        .game img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .game a {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 12px 28px;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, #ff4fd8 0%, #ffb86c 100%);
+            font-weight: bold;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 16px 0 rgba(255,79,216,0.18);
+            border: none;
+            outline: none;
+            transition: 
+                background 0.3s,
+                color 0.3s,
+                box-shadow 0.3s,
+                transform 0.2s;
+            cursor: pointer;
+        }
+        .game a:hover {
+            background: linear-gradient(90deg, #ffb86c 0%, #ff4fd8 100%);
+            color: #182043;
+            box-shadow: 0 0 24px 6px #ff4fd8, 0 4px 16px rgba(255,184,108,0.18);
+            transform: scale(1.08);
+        }
+        h2{
+            color:aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span class="wavecolor">G</span><span class="wavecolor">A</span><span class="wavecolor">M</span><span class="wavecolor">E</span>
+        <span class="wavecolor">&nbsp;</span>
+        <span class="wavecolor">B</span><span class="wavecolor">O</span><span class="wavecolor">X</span>
+        <span class="wavecolor">&nbsp;🎮</span>
+    </h1>
+<div class="game-container">
+    <div class="slider" style="--quantity:4">
+        <div class="game" style="--position:1" >
+            <h2>ludo</h2>
+            <img src="./ludo_game/ludo/ludo-bg.jpg" alt="LUDO">
+            <a href="#" onclick="launchGame(this)" data-local="http://127.0.0.1:5500/js%20project/game%20box/ludo_game/index.html" data-online="http://127.0.0.1:5500/ludo_game/index.html">Play Game</a>
+
+        </div>
+        <div class="game" style="--position:2">
+            <h2>memory card</h2>
+            <img src="memory.png" alt="MEMORY CARD">
+            <a href="#" onclick="launchGame(this)" data-local="http://127.0.0.1:5500/js%20project/game%20box/memory%20card%20game/index.html" data-online="http://127.0.0.1:5500/memory%20card%20game/index.html">Play Game</a>
+
+        </div>
+        <div class="game" style="--position:3">
+            <h2>ping pong</h2>
+            <img src="ping.png" alt="PING PONG">
+            <a href="#" onclick="launchGame(this)" data-local="http://127.0.0.1:5500/js%20project/game%20box/ping%20pong/index.html" data-online="http://127.0.0.1:5500/ping%20pong/index.html">Play Game</a>
+
+        </div>
+        <div class="game" style="--position:4">
+            <h2>snake and ladder</h2>
+            <img src="./snake game/snake ladder.png" alt="SNAKE AND LADDER">
+            <a href="#" onclick="launchGame(this)" data-local="http://127.0.0.1:5500/js%20project/game%20box/snake%20game/snake.html" data-online="http://127.0.0.1:5500/snake%20game/snake.html">Play Game</a>
+        </div>
+    </div>
+</div>
+    <script>
+        function launchGame(el) {
+          const localURL = el.getAttribute('data-local');
+          const onlineURL = el.getAttribute('data-online');
+      
+          fetch(localURL)
+            .then(res => {
+              if (res.ok) {
+                window.open(localURL, '_blank');
+              } else {
+                throw new Error();
+              }
+            })
+            .catch(() => {
+              window.open(onlineURL, '_blank');
+            });
+        }
+      </script>
+      
+</body>
+</html>
+
